@@ -1,16 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Magan Solution</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magan Solutions</title>
+  <meta name="description" content="Magan Solutions – Android apps, quizzes, and smart digital solutions." />
 
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="y9N5taKhtVd6v8QXoERgXLTY1LQWj4ncO327iLBIodg" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --sky: #38bdf8;       /* sky blue */
+      --sky-dark: #0ea5e9;
+      --yellow: #facc15;    /* yellow */
+      --dark: #0f172a;
+      --gray: #475569;
+      --light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffffee;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sky-dark);
+    }
+
+    .logo span {
+      color: var(--yellow);
+    }
+
+    .nav-links a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    /* HERO */
+    header {
+      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+      color: #fff;
+      padding: 120px 20px 140px;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #fff;
+      border-top-left-radius: 80px;
+      border-top-right-radius: 80px;
+    }
+
+    header h1 {
+      font-size: 3.4rem;
+      font-weight: 700;
+    }
+
+    header h1 span {
+      color: var(--yellow);
+    }
+
+    header p {
+      margin-top: 16px;
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--yellow);
+      color: var(--dark);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 16px 40px;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 14px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--gray);
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 60px;
+      font-size: 1.05rem;
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 36px;
+      border-radius: 22px;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      font-size: 1.4rem;
+      color: var(--sky-dark);
+    }
+
+    .card p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    /* APPS */
+    .app-badge {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 18px;
+      background: #e0f2fe;
+      color: var(--sky-dark);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #cbd5f5;
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: 80px;
+    }
+
+    footer strong {
+      color: var(--yellow);
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Magan Solution</h1>
-    <p>Official site for app-ads.txt verification.</p>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Magan<span>Solutions</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#apps">Apps</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <h1>Smart Apps by <span>Magan Solutions</span></h1>
+    <p>
+      We design modern Android applications, quiz platforms, and smart digital tools
+      with clean UI, smooth performance, and Play Store readiness.
+    </p>
+    <div class="hero-actions">
+      <a href="#apps" class="btn-primary">View Our Apps</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>Who We Are</h2>
+    <p class="section-desc">
+      Magan Solutions is a modern app development studio focused on creating high-quality, user-friendly Android applications. We specialize in quiz and learning platforms, combining clean design, smooth performance, and reliable functionality to deliver apps that users enjoy and trust. Our mission is to build simple yet powerful digital solutions that meet real-world needs and follow the latest Play Store standards.
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p class="section-desc">Everything you need to launch a successful Android app</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>📱 Android App Development</h3>
+        <p>High-quality Android apps with modern UI, Material design, and latest SDK support.</p>
+      </div>
+      <div class="card">
+        <h3>🧠 Quiz & Learning Platforms</h3>
+        <p>Feature-rich quiz apps with categories, streaks, rewards, analytics, and AdMob.</p>
+      </div>
+      <div class="card">
+        <h3>⚙️ App Publishing Support</h3>
+        <p>Play Store setup, app-ads.txt, privacy policy, and monetization guidance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section id="apps">
+    <h2>Our Apps</h2>
+    <p class="section-desc">Some of the applications crafted by Magan Solutions</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>CoreQuiz</h3>
+        <p>A modern quiz app with categories, streaks, animations, and smart rewards.</p>
+        <span class="app-badge">Android • Quiz App</span>
+      </div>
+      <div class="card">
+        <h3>More Coming Soon</h3>
+        <p>We are actively working on new apps focused on learning and productivity.</p>
+        <span class="app-badge">Stay Tuned</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="section-desc">Let’s build something amazing together</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>🌐 GitHub</h3>
+        <p>github.com/magansolution</p>
+      </div>
+      <div class="card">
+        <h3>📧 Email</h3>
+        <p>magansolution@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <strong>Magan Solutions</strong> • Built with passion and precision</p>
+  </footer>
+
 </body>
 </html>
