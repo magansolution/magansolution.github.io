@@ -1,321 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Magan Solutions</title>
-  <meta name="description" content="Magan Solutions – Android apps, quizzes, and smart digital solutions." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magan Solutions</title>
+<meta name="description" content="Magan Solutions – Android apps, quizzes, and smart digital solutions.">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --sky: #38bdf8;       /* sky blue */
-      --sky-dark: #0ea5e9;
-      --yellow: #facc15;    /* yellow */
-      --dark: #0f172a;
-      --gray: #475569;
-      --light: #f8fafc;
-    }
+<style>
+:root{
+  --sky:#38bdf8;
+  --sky-dark:#0ea5e9;
+  --yellow:#facc15;
+  --dark:#0f172a;
+  --gray:#475569;
+  --light:#ffffff;
+  --card-dark:rgba(0,0,0,0.1);
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 
-    body {
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.7;
-    }
+/* ===== BODY ===== */
+body{
+  background:var(--light);
+  color:var(--dark);
+  line-height:1.7;
+  transition:.4s;
+}
 
-    /* NAVBAR */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #ffffffee;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
+body.dark{
+  background:#0b122a;
+  color:#e5e7eb;
+}
 
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+/* ===== NAV ===== */
+nav{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:#ffffffee;
+  backdrop-filter:blur(10px);
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--sky-dark);
-    }
+body.dark nav{background:#020617ee}
 
-    .logo span {
-      color: var(--yellow);
-    }
+.logo{font-size:1.6rem;font-weight:700;color:var(--sky-dark)}
+.logo span{color:var(--yellow)}
 
-    .nav-links a {
-      margin-left: 22px;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-    }
+.nav-links{
+  display:flex;
+  gap:18px;
+}
 
-    /* HERO */
-    header {
-      background: linear-gradient(135deg, var(--sky), var(--sky-dark));
-      color: #fff;
-      padding: 120px 20px 140px;
-      text-align: center;
-      position: relative;
-    }
+.nav-links a{
+  text-decoration:none;
+  color:inherit;
+  font-weight:500;
+  font-size:.95rem;
+}
 
-    header::after {
-      content: "";
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background: #fff;
-      border-top-left-radius: 80px;
-      border-top-right-radius: 80px;
-    }
+/* Hamburger */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
+}
 
-    header h1 {
-      font-size: 3.4rem;
-      font-weight: 700;
-    }
+.hamburger span{
+  width:24px;
+  height:3px;
+  background:var(--dark);
+  transition:.3s;
+}
 
-    header h1 span {
-      color: var(--yellow);
-    }
+body.dark .hamburger span{background:#fff}
 
-    header p {
-      margin-top: 16px;
-      font-size: 1.2rem;
-      opacity: 0.95;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+/* ===== HERO ===== */
+header.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px 140px;
+  background:linear-gradient(135deg,var(--sky),var(--sky-dark));
+}
 
-    .hero-actions {
-      margin-top: 36px;
-    }
+#bg-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
 
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 40px;
-      background: var(--yellow);
-      color: var(--dark);
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 10px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    }
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+}
 
-    .btn-outline {
-      display: inline-block;
-      padding: 16px 40px;
-      border: 2px solid #fff;
-      color: #fff;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 10px;
-    }
+header h1{
+  font-size:clamp(2.2rem,6vw,3.6rem);
+}
 
-    /* SECTIONS */
-    section {
-      padding: 90px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+header h1 span{color:var(--yellow)}
 
-    section h2 {
-      text-align: center;
-      font-size: 2.6rem;
-      margin-bottom: 14px;
-    }
+header p{
+  margin-top:16px;
+  font-size:clamp(1rem,2.8vw,1.2rem);
+  max-width:720px;
+  margin-inline:auto;
+}
 
-    .section-desc {
-      text-align: center;
-      color: var(--gray);
-      max-width: 700px;
-      margin: auto;
-      margin-bottom: 60px;
-      font-size: 1.05rem;
-    }
+.hero-actions{
+  margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+}
 
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+.btn-primary,.btn-outline{
+  padding:14px 34px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  font-size:.95rem;
+}
 
-    .card {
-      background: #fff;
-      padding: 36px;
-      border-radius: 22px;
-      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.1);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+.btn-primary{background:var(--yellow);color:var(--dark)}
+.btn-outline{border:2px solid #fff;color:#fff}
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
-    }
+/* ===== SECTIONS ===== */
+section{
+  position:relative;
+  z-index:1;
+  padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(10px);
+  border-radius:32px;
+  margin-top:60px;
+}
 
-    .card h3 {
-      margin-bottom: 14px;
-      font-size: 1.4rem;
-      color: var(--sky-dark);
-    }
+body.dark section{background:rgba(2,6,23,.85)}
 
-    .card p {
-      color: var(--gray);
-      font-size: 1rem;
-    }
+section h2{
+  text-align:center;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  margin-bottom:14px;
+}
 
-    /* APPS */
-    .app-badge {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 10px 18px;
-      background: #e0f2fe;
-      color: var(--sky-dark);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+.section-desc{
+  text-align:center;
+  color:var(--gray);
+  max-width:700px;
+  margin:0 auto 50px;
+}
 
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: #cbd5f5;
-      text-align: center;
-      padding: 50px 20px;
-      margin-top: 80px;
-    }
+body.dark .section-desc{color:#cbd5f5}
 
-    footer strong {
-      color: var(--yellow);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
 
-    @media (max-width: 640px) {
-      header h1 {
-        font-size: 2.4rem;
-      }
-    }
-  </style>
+/* ===== CARDS ===== */
+.card{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  padding:32px;
+  border-radius:22px;
+  box-shadow:0 20px 50px rgba(14,165,233,.25);
+  transition:.3s;
+}
+
+body.dark .card{background:var(--card-dark)}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:
+    0 30px 60px rgba(56,189,248,.5),
+    0 0 0 2px rgba(250,204,21,.35);
+}
+
+.card h3{
+  margin-bottom:12px;
+  color:var(--sky-dark);
+  font-size:1.2rem;
+}
+
+/* ===== BADGE ===== */
+.app-badge{
+  display:inline-block;
+  margin-top:14px;
+  padding:9px 16px;
+  background:#e0f2fe;
+  color:var(--sky-dark);
+  border-radius:999px;
+  font-size:.8rem;
+  font-weight:600;
+}
+
+body.dark .app-badge{background:#020617;color:var(--yellow)}
+
+/* ===== STATS ===== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:30px;
+  text-align:center;
+  background:
+    linear-gradient(135deg,rgba(56,189,248,.35),rgba(250,204,21,.25));
+}
+
+.stat h3{
+  font-size:clamp(2.2rem,6vw,3rem);
+  color:var(--yellow);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:linear-gradient(135deg,#0ea5e9,#0284c7);
+  color:#f8fafc;
+  text-align:center;
+  padding:60px 20px;
+  margin-top:100px;
+}
+
+footer a{color:#fde68a;text-decoration:none;margin:0 6px}
+
+/* ===== TOGGLE ===== */
+.toggle{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--yellow);
+  border:none;
+  padding:14px 18px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:1.1rem;
+  z-index:200;
+}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.show{opacity:1;transform:none}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    background:var(--light);
+    position:absolute;
+    top:100%;
+    right:0;
+    width:200px;
+    border-radius:8px;
+    padding:10px 0;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+  }
+
+  body.dark .nav-links{background:#020617}
+
+  .nav-links.show{display:flex}
+
+  .hamburger{
+    display:flex;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Magan<span>Solutions</span></div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#apps">Apps</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+<button class="toggle" id="themeToggle">🌙</button>
 
-  <!-- HERO -->
-  <header>
+<nav>
+  <div class="logo">Magan<span>Solutions</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#apps">Apps</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<header class="hero reveal">
+  <canvas id="bg-canvas"></canvas>
+  <div class="hero-content">
     <h1>Smart Apps by <span>Magan Solutions</span></h1>
-    <p>
-      We design modern Android applications, quiz platforms, and smart digital tools
-      with clean UI, smooth performance, and Play Store readiness.
-    </p>
+    <p>We design modern Android applications, quiz platforms, and smart digital tools with clean UI and Play Store readiness.</p>
     <div class="hero-actions">
       <a href="#apps" class="btn-primary">View Our Apps</a>
       <a href="#contact" class="btn-outline">Contact Us</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>Who We Are</h2>
-    <p class="section-desc">
-      Magan Solutions is a modern app development studio focused on creating high-quality, user-friendly Android applications. We specialize in quiz and learning platforms, combining clean design, smooth performance, and reliable functionality to deliver apps that users enjoy and trust. Our mission is to build simple yet powerful digital solutions that meet real-world needs and follow the latest Play Store standards.
-    </p>
-  </section>
+<section class="stats reveal">
+  <div class="stat"><h3 class="counter" data-target="5">0</h3><p>Apps</p></div>
+  <div class="stat"><h3 class="counter" data-target="5000">0</h3><p>Users</p></div>
+  <div class="stat"><h3 class="counter" data-target="12000">0</h3><p>Downloads</p></div>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <p class="section-desc">Everything you need to launch a successful Android app</p>
+<section id="about" class="reveal">
+  <h2>Who We Are</h2>
+  <p class="section-desc">Magan Solutions is a modern app development studio focused on creating high-quality Android applications and quiz platforms.</p>
+</section>
 
-    <div class="grid">
-      <div class="card">
-        <h3>📱 Android App Development</h3>
-        <p>High-quality Android apps with modern UI, Material design, and latest SDK support.</p>
-      </div>
-      <div class="card">
-        <h3>🧠 Quiz & Learning Platforms</h3>
-        <p>Feature-rich quiz apps with categories, streaks, rewards, analytics, and AdMob.</p>
-      </div>
-      <div class="card">
-        <h3>⚙️ App Publishing Support</h3>
-        <p>Play Store setup, app-ads.txt, privacy policy, and monetization guidance.</p>
-      </div>
-    </div>
-  </section>
+<section id="services" class="reveal">
+  <h2>Our Services</h2>
+  <p class="section-desc">Everything you need to launch a successful Android app</p>
+  <div class="grid">
+    <div class="card"><h3>📱 Android Apps</h3><p>Modern, fast and Play Store compliant apps.</p></div>
+    <div class="card"><h3>🧠 Quiz Platforms</h3><p>Categories, streaks, analytics and rewards.</p></div>
+    <div class="card"><h3>⚙️ Publishing Help</h3><p>AdMob, policies, app-ads.txt & monetization.</p></div>
+  </div>
+</section>
 
-  <!-- APPS -->
-  <section id="apps">
-    <h2>Our Apps</h2>
-    <p class="section-desc">Some of the applications crafted by Magan Solutions</p>
+<section id="apps" class="reveal">
+  <h2>Our Apps</h2>
+  <p class="section-desc">Applications crafted by Magan Solutions</p>
+  <div class="grid">
+    <div class="card"><h3>CoreQuiz</h3><p>Modern quiz app.</p><span class="app-badge">Android</span></div>
+    <div class="card"><h3>More Coming</h3><p>New learning apps.</p><span class="app-badge">Soon</span></div>
+  </div>
+</section>
 
-    <div class="grid">
-      <div class="card">
-        <h3>CoreQuiz</h3>
-        <p>A modern quiz app with categories, streaks, animations, and smart rewards.</p>
-        <span class="app-badge">Android • Quiz App</span>
-      </div>
-      <div class="card">
-        <h3>More Coming Soon</h3>
-        <p>We are actively working on new apps focused on learning and productivity.</p>
-        <span class="app-badge">Stay Tuned</span>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="reveal">
+  <h2>Contact</h2>
+  <p class="section-desc">Let’s build something amazing together</p>
+  <div class="grid">
+    <div class="card"><h3>🌐 GitHub</h3><p>github.com/magansolution</p></div>
+    <div class="card"><h3>📧 Email</h3><p>magansolution@gmail.com</p></div>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="section-desc">Let’s build something amazing together</p>
+<footer>
+  © 2026 <strong>Magan Solutions</strong> ·
+  <a href="https://magansolution.github.io/privacy-policy.html">Privacy Policy</a> ·
+  <a href="https://magansolution.github.io/terms-conditions.html">Terms &amp; Condtions</a>
+</footer>
 
-    <div class="grid">
-      <div class="card">
-        <h3>🌐 GitHub</h3>
-        <p>github.com/magansolution</p>
-      </div>
-      <div class="card">
-        <h3>📧 Email</h3>
-        <p>magansolution@gmail.com</p>
-      </div>
-    </div>
-  </section>
+<script>
+// Hamburger toggle
+const hamburger=document.getElementById("hamburger");
+const navLinks=document.querySelector(".nav-links");
+hamburger.onclick=()=>navLinks.classList.toggle("show");
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 <strong>Magan Solutions</strong> • Built with passion and precision</p>
-  </footer>
+// Dark mode toggle
+const toggle=document.getElementById("themeToggle");
+if(localStorage.theme==="dark")document.body.classList.add("dark");
+toggle.onclick=()=>{
+  document.body.classList.toggle("dark");
+  localStorage.theme=document.body.classList.contains("dark")?"dark":"light";
+};
+
+// Counters
+document.querySelectorAll(".counter").forEach(c=>{
+  let t=+c.dataset.target,n=0,step=t/80;
+  const run=()=>{n+=step;if(n<t){c.textContent=Math.floor(n);requestAnimationFrame(run)}else c.textContent=t};
+  run();
+});
+
+// Reveal
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"));
+},{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+// Canvas Dots Animation
+const canvas=document.getElementById("bg-canvas");
+const header=document.querySelector("header.hero");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=header.clientWidth;
+  canvas.height=header.clientHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+const balls=[];
+for(let i=0;i<canvas.width*canvas.height/(120*120);i++){
+  balls.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    vx:(Math.random()-.5)*0.6,
+    vy:(Math.random()-.5)*0.6
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  balls.forEach((b,i)=>{
+    b.x+=b.vx; b.y+=b.vy;
+    if(b.x<0||b.x>canvas.width)b.vx*=-1;
+    if(b.y<0||b.y>canvas.height)b.vy*=-1;
+
+    // Draw circle
+    ctx.fillStyle="#7dd3fc";
+    ctx.globalAlpha=.6;
+    ctx.beginPath();
+    ctx.arc(b.x,b.y,2.5,0,Math.PI*2);
+    ctx.fill();
+
+    // Draw connecting lines
+    for(let j=i+1;j<balls.length;j++){
+      const dx=b.x-balls[j].x;
+      const dy=b.y-balls[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        ctx.strokeStyle="rgba(125,211,252,0.25)";
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(b.x,b.y);
+        ctx.lineTo(balls[j].x,balls[j].y);
+        ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 
 </body>
 </html>
