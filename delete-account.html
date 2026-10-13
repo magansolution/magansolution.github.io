@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your ResuMagan account and data</title>
+<meta name="description" content="How to delete your ResuMagan account and the data stored with it, and what we delete or keep.">
+<meta name="robots" content="index, follow">
+
+<style>
+  :root{
+    --bg:#f6f7ff; --card:#ffffff; --text:#1f2540; --muted:#5a67b8; --navy:#0f1b4c;
+    --accent:#4f46e5; --accent-dark:#3b34c4; --line:#e3e7f8; --soft:#eef1ff;
+    --danger:#e5484d; --danger-soft:#fdecec; --ok:#1e9e5a; --ok-soft:#ddf5e8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e1220; --card:#161b2e; --text:#c9d0f2; --muted:#9aa6e0; --navy:#e8ecff;
+      --accent:#8c95ff; --accent-dark:#aab2ff; --line:#2c3454; --soft:#1a2140;
+      --danger:#ff6b70; --danger-soft:#3d1b26; --ok:#5bd99b; --ok-soft:#17352a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6; font-size:16px;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:28px 18px 56px}
+  header.brand{display:flex; align-items:center; gap:10px; margin-bottom:22px}
+  .logo{font-weight:800; font-size:26px; letter-spacing:-.01em; color:var(--navy)}
+  .logo span{color:var(--accent)}
+  .tag{margin-left:auto; font-size:12px; font-weight:600; color:var(--muted); background:var(--soft);
+       padding:4px 10px; border-radius:999px; border:1px solid var(--line)}
+  h1{font-size:30px; line-height:1.2; margin:0 0 10px; color:var(--navy); letter-spacing:-.015em}
+  h2{font-size:21px; margin:0 0 12px; color:var(--navy)}
+  h3{font-size:16px; margin:18px 0 6px; color:var(--navy)}
+  p{margin:0 0 12px}
+  .lead{font-size:17px; color:var(--muted); margin-bottom:22px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; margin-bottom:18px}
+  .card.primary{border-color:var(--accent); box-shadow:0 0 0 3px var(--soft)}
+  .badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+         padding:3px 10px; border-radius:999px; background:var(--soft); color:var(--accent); margin-bottom:10px}
+  ol.steps{list-style:none; counter-reset:s; padding:0; margin:14px 0 4px}
+  ol.steps li{counter-increment:s; position:relative; padding:0 0 12px 46px; margin:0}
+  ol.steps li:before{
+    content:counter(s); position:absolute; left:0; top:-2px; width:32px; height:32px; border-radius:50%;
+    background:var(--accent); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:15px
+  }
+  .path{display:inline-block; background:var(--soft); border:1px solid var(--line); border-radius:8px;
+        padding:1px 8px; font-weight:600; color:var(--navy); white-space:nowrap}
+  .btn{
+    display:inline-block; background:var(--accent); color:#fff !important; text-decoration:none; font-weight:700;
+    padding:13px 22px; border-radius:12px; margin:6px 0 4px;
+  }
+  .btn:hover{background:var(--accent-dark)}
+  .note{background:var(--soft); border-left:4px solid var(--accent); border-radius:8px; padding:12px 14px; margin:14px 0}
+  .warn{background:var(--danger-soft); border-left:4px solid var(--danger); border-radius:8px; padding:12px 14px; margin:14px 0}
+  table{width:100%; border-collapse:collapse; font-size:15px; margin-top:8px}
+  th,td{text-align:left; padding:10px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted)}
+  .del{color:var(--ok); font-weight:700; white-space:nowrap}
+  .keep{color:var(--danger); font-weight:700; white-space:nowrap}
+  ul{margin:6px 0 12px; padding-left:22px}
+  li{margin-bottom:6px}
+  a{color:var(--accent)}
+  .table-scroll{overflow-x:auto}
+  footer{font-size:14px; color:var(--muted); margin-top:26px; text-align:center}
+  code{background:var(--soft); padding:1px 6px; border-radius:6px; font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="brand">
+    <div class="logo">Resu<span>Magan</span></div>
+    <div class="tag">Account &amp; data deletion</div>
+  </header>
+
+  <h1>Delete your ResuMagan account and data</h1>
+  <p class="lead">
+    This page explains how to delete your account and the data stored with it for the
+    <strong>ResuMagan</strong> Android app (package <code>com.magansolutions.resumagan</code>),
+    published by <strong>Magan Solutions</strong>.
+  </p>
+
+  <!-- OPTION 1 -->
+  <section class="card primary" id="in-app">
+    <span class="badge">Fastest &middot; instant</span>
+    <h2>Option 1: Delete inside the app</h2>
+    <p>You can delete your account yourself in the ResuMagan app. Everything is removed immediately.</p>
+    <ol class="steps">
+      <li>Open the <strong>ResuMagan</strong> app and sign in to the account you want to delete.</li>
+      <li>Tap <span class="path">Profile</span> in the bottom bar.</li>
+      <li>Scroll down and tap <span class="path">Delete Account</span>.</li>
+      <li>Read the warning and tap <span class="path">Delete</span> to confirm.</li>
+      <li>Confirm it is you: enter your <strong>password</strong> (email accounts), or choose your <strong>Google account</strong> (Google sign-in accounts).</li>
+      <li>Wait for the message <strong>&ldquo;Your account was deleted&rdquo;</strong>. You are then signed out.</li>
+    </ol>
+    <div class="warn">
+      <strong>This cannot be undone.</strong> Download any resumes you want to keep as PDF files before you delete your account.
+    </div>
+  </section>
+
+  <!-- OPTION 2 -->
+  <section class="card" id="by-email">
+    <span class="badge">No app access needed</span>
+    <h2>Option 2: Request deletion by email</h2>
+    <p>
+      If you uninstalled the app, cannot sign in, or cannot open the app, you can ask us to delete your account
+      and data.
+    </p>
+    <ol class="steps">
+      <li>
+        Send an email to <a href="mailto:magansolution@gmail.com">magansolution@gmail.com</a>
+        <strong>from the email address you used to register</strong>, with the subject
+        <em>&ldquo;Delete my ResuMagan account&rdquo;</em>.
+        <br>
+        <a class="btn" href="mailto:magansolution@gmail.com?subject=Delete%20my%20ResuMagan%20account&amp;body=Please%20delete%20my%20ResuMagan%20account%20and%20all%20data%20linked%20to%20it.%0A%0ARegistered%20email%3A%20%0A%28If%20you%20signed%20in%20with%20Google%2C%20write%20the%20Gmail%20address%20you%20used.%29">Email a deletion request</a>
+      </li>
+      <li>We may reply to confirm that the request really comes from you. Replying from the registered address is enough.</li>
+      <li>We delete your account and data and send you a confirmation. We complete requests <strong>within 30 days</strong>, usually much sooner.</li>
+    </ol>
+    <div class="note">
+      Please do not send passwords, ID numbers or other sensitive details in your request. The email address is all we need.
+    </div>
+  </section>
+
+  <!-- WHAT IS DELETED -->
+  <section class="card" id="what-is-deleted">
+    <h2>What we delete</h2>
+    <p>When your account is deleted, we permanently delete the following from our systems:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Data</th><th>What it includes</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account</td>
+            <td>Your email address, name, and your sign-in details (email &amp; password sign-in, or the link to your Google sign-in).</td>
+            <td class="del">Deleted</td>
+          </tr>
+          <tr>
+            <td>Resumes</td>
+            <td>Everything in your saved resumes and drafts: personal details, profile photo, summary, work experience, education, skills, projects, certifications, awards, languages, interests, custom sections, and the template and design you chose.</td>
+            <td class="del">Deleted</td>
+          </tr>
+          <tr>
+            <td>AI data</td>
+            <td>Your AI Assistant chat history, your &ldquo;Recent AI actions&rdquo; (such as generated summaries and ATS checks) and the text saved with them.</td>
+            <td class="del">Deleted</td>
+          </tr>
+          <tr>
+            <td>Profile</td>
+            <td>Your profile picture and profile settings stored with your account.</td>
+            <td class="del">Deleted</td>
+          </tr>
+          <tr>
+            <td>Notifications</td>
+            <td>The notification tokens of your devices that we saved under your account.</td>
+            <td class="del">Deleted</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- WHAT IS KEPT -->
+  <section class="card" id="what-is-kept">
+    <h2>What we may keep, and for how long</h2>
+    <table>
+      <thead>
+        <tr><th>Data</th><th>Why and how long</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Backups and system logs</td>
+          <td>Copies of deleted data can remain in secure backups or technical logs for a short time until they are overwritten. This is <strong>up to 30 days</strong>. We do not use them for any other purpose.</td>
+        </tr>
+        <tr>
+          <td>Usage and ad data held by Google</td>
+          <td>The app uses Google Analytics for Firebase and Google AdMob. Analytics data is used in aggregated or pseudonymous form and is kept according to Google&rsquo;s own retention settings. It is no longer linked to a ResuMagan account once the account is deleted. Ad-related data is controlled by Google. You can reset or delete your advertising ID, or turn off ad personalisation, in your phone&rsquo;s settings (<em>Settings &gt; Privacy &gt; Ads</em> or <em>Settings &gt; Google &gt; Ads</em>).</td>
+        </tr>
+        <tr>
+          <td>Legal or security records</td>
+          <td>We keep the minimum information we are required by law to keep, or need to prevent fraud and abuse (for example, a record that a deletion request was made). If we do keep something, we keep it only for as long as the law or the purpose requires.</td>
+        </tr>
+        <tr>
+          <td>Files you already downloaded or shared</td>
+          <td>PDF resumes you saved to your phone or sent to other people are outside our control. Please delete them yourself.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- PARTIAL DELETION -->
+  <section class="card" id="partial">
+    <h2>Delete only some of your data</h2>
+    <p>You can remove specific data and keep your account. In the app:</p>
+    <ul>
+      <li><strong>A resume:</strong> open the resume&rsquo;s menu (&#8942;) and tap <span class="path">Delete</span>.</li>
+      <li><strong>AI chat history:</strong> AI Assistant &gt; open the chat &gt; history icon &gt; <span class="path">Clear</span>.</li>
+      <li><strong>Profile photo:</strong> Profile &gt; tap your photo &gt; <span class="path">Remove photo</span>.</li>
+      <li><strong>Notifications:</strong> Profile &gt; turn off <span class="path">Notifications</span>.</li>
+    </ul>
+    <p>You can also email <a href="mailto:magansolution@gmail.com">magansolution@gmail.com</a> to ask us to delete specific data.</p>
+  </section>
+
+  <section class="card" id="contact">
+    <h2>Questions?</h2>
+    <p>
+      Contact <strong>Magan Solutions</strong> at <a href="mailto:magansolution@gmail.com">magansolution@gmail.com</a>.
+      For how we handle data in general, see our Privacy Policy in the ResuMagan app (<em>Profile &gt; Privacy Policy</em>).
+    </p>
+  </section>
+
+  <footer>
+    ResuMagan &middot; Magan Solutions &middot; Last updated: 7 October 2026
+  </footer>
+
+</div>
+</body>
+</html>
